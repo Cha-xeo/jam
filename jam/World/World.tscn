@@ -1,0 +1,133 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://World/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Background/Isle/sky.png" type="Texture" id=2]
+[ext_resource path="res://assets/Background/Isle/sea.png" type="Texture" id=3]
+[ext_resource path="res://assets/Background/Isle/clouds.png" type="Texture" id=4]
+[ext_resource path="res://World/Isle.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SegmentShape2D" id=8]
+b = Vector2( 1066.03, -0.712891 )
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( -12.0927, -50.4737 )
+b = Vector2( -12.0927, 149.526 )
+
+[sub_resource type="RayShape2D" id=2]
+length = 651.812
+
+[sub_resource type="RayShape2D" id=3]
+length = 21.4
+
+[sub_resource type="RayShape2D" id=4]
+length = 159.598
+
+[sub_resource type="RayShape2D" id=5]
+
+[sub_resource type="RayShape2D" id=6]
+length = 616.463
+
+[node name="World" type="Node2D"]
+position = Vector2( 66.8216, 461.257 )
+
+[node name="BackGround" type="ParallaxBackground" parent="."]
+layer = -1
+scroll_base_scale = Vector2( 0.5, 0.25 )
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayerSky" type="ParallaxLayer" parent="BackGround"]
+visible = false
+motion_mirroring = Vector2( 320, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sky" type="Sprite" parent="BackGround/ParallaxLayerSky"]
+position = Vector2( 0, -120 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 304 )
+
+[node name="ParallaxLayerClouds" type="ParallaxLayer" parent="BackGround"]
+visible = false
+motion_mirroring = Vector2( 304, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Clouds" type="Sprite" parent="BackGround/ParallaxLayerClouds"]
+position = Vector2( 0, 0.067 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 304, 130 )
+
+[node name="ParallaxLayerSea" type="ParallaxLayer" parent="BackGround"]
+visible = false
+motion_mirroring = Vector2( 320, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sea" type="Sprite" parent="BackGround/ParallaxLayerSea"]
+position = Vector2( 0, 88 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 96 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 40.2581, 73.4221 )
+
+[node name="Isle" parent="YSort" instance=ExtResource( 5 )]
+
+[node name="TileMap" parent="YSort/Isle" index="0"]
+tile_data = PoolIntArray( -1179586, 8, 0, -1114050, 8, 0, -1048514, 8, 0, -982978, 8, 0, -917442, 8, 0, -851906, 8, 0, -786370, 8, 0, -720834, 8, 0, -655306, 0, 0, -655298, 8, 0, -589762, 8, 0, -524226, 8, 0, -458690, 8, 0, -393154, 8, 0, -327618, 8, 0, -262082, 8, 0, -196553, 15, 0, -196550, 16, 0, -196546, 8, 0, -131010, 8, 0, -65486, 5, 0, -65474, 8, 0, 45, 5, 0, 62, 8, 0, 65559, 7, 0, 65562, 2, 0, 65575, 5, 0, 65598, 8, 0, 131084, 3, 0, 131086, 3, 0, 131088, 3, 0, 131090, 3, 0, 131092, 3, 0, 131134, 8, 0, 262140, 10, 0, 196637, 8, 0, 196638, 8, 0, 196639, 8, 0, 196640, 9, 0, 196670, 8, 0, 262145, 2, 0, 262148, 3, 0, 262150, 3, 0, 262152, 3, 0, 262206, 8, 0, 327742, 8, 0, 393278, 8, 0, 458814, 8, 0, 524350, 8, 0, 589886, 8, 0 )
+
+[node name="Area2D" type="Area2D" parent="YSort"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Area2D"]
+position = Vector2( -26.0678, 204.338 )
+shape = SubResource( 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort"]
+position = Vector2( 168, 0 )
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="YSort/StaticBody2D"]
+position = Vector2( 111.643, -191.951 )
+scale = Vector2( 1.00548, 1 )
+polygon = PoolVector2Array( 75.9014, 42.6697, 128.774, 26.8269, 139.553, 26.6697, 139.553, 42.6697, 107.727, 42.6697, 91.8141, 42.6697 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/StaticBody2D"]
+position = Vector2( -155.907, -85.5263 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/StaticBody2D"]
+position = Vector2( 150.489, -3.41919 )
+rotation = 4.18879
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/StaticBody2D"]
+position = Vector2( -58.1565, -171.119 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="YSort/StaticBody2D"]
+position = Vector2( 58.4633, 6.29987 )
+rotation = -3.14159
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="YSort/StaticBody2D"]
+position = Vector2( 81.025, -232.894 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="YSort/StaticBody2D"]
+position = Vector2( 140.892, -203.205 )
+rotation = -1.5708
+shape = SubResource( 6 )
+[connection signal="body_shape_entered" from="YSort/Area2D" to="YSort/Player" method="_on_Area2D_body_shape_entered"]
+
+[editable path="YSort/Isle"]
