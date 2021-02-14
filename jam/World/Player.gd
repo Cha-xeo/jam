@@ -12,19 +12,37 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 onready var shape = $Shape
+onready var array = []
 
 enum {
 	JUMPING,
 	IDLING,
 	RUNNING
 }
-
+var mod = 1
 var state = IDLING
 
 func _ready():
 	animationTree.active = true
+	
+func get_position():
+	var ret = Vector2(self.global_transform.origin.x - 67, self.global_transform.origin.y - 468)
+	return ret
 
 func move(delta, walk):
+	if Input.is_action_pressed("ui_past") && array.size() > 5:
+		self.set_position(Vector2(array.front().x, array.front().y))
+		array.remove(0)
+		mod -= 0.02
+		animationSkull.modulate.a = mod
+		return
+	else:
+		if (array.size() >= 1000):
+			array.remove(999)
+		if (mod < 1):
+			mod += 0.005
+			animationSkull.modulate.a = mod
+		array.push_front(get_position())
 	if abs(walk) < WALK_FORCE * 0.2:
 		state = IDLING
 		velocity.x = move_toward(velocity.x, 0, STOP_FORCE * delta)
@@ -63,4 +81,4 @@ func _physics_process(delta):
 	animation()
 
 func _on_Area2D_body_shape_entered(body_id, body, body_shape, area_shape):
-	queue_free()
+	body.set_position(Vector2(0,0))

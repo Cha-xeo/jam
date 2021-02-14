@@ -6,25 +6,25 @@
 [ext_resource path="res://assets/Background/Isle/clouds.png" type="Texture" id=4]
 [ext_resource path="res://World/Isle.tscn" type="PackedScene" id=5]
 
-[sub_resource type="SegmentShape2D" id=8]
+[sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 1066.03, -0.712891 )
 
-[sub_resource type="SegmentShape2D" id=1]
+[sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -12.0927, -50.4737 )
 b = Vector2( -12.0927, 149.526 )
 
-[sub_resource type="RayShape2D" id=2]
+[sub_resource type="RayShape2D" id=3]
 length = 651.812
 
-[sub_resource type="RayShape2D" id=3]
+[sub_resource type="RayShape2D" id=4]
 length = 21.4
 
-[sub_resource type="RayShape2D" id=4]
+[sub_resource type="RayShape2D" id=5]
 length = 159.598
 
-[sub_resource type="RayShape2D" id=5]
-
 [sub_resource type="RayShape2D" id=6]
+
+[sub_resource type="RayShape2D" id=7]
 length = 616.463
 
 [node name="World" type="Node2D"]
@@ -91,7 +91,7 @@ tile_data = PoolIntArray( -1179586, 8, 0, -1114050, 8, 0, -1048514, 8, 0, -98297
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Area2D"]
 position = Vector2( -26.0678, 204.338 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort"]
 position = Vector2( 168, 0 )
@@ -103,31 +103,31 @@ polygon = PoolVector2Array( 75.9014, 42.6697, 128.774, 26.8269, 139.553, 26.6697
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/StaticBody2D"]
 position = Vector2( -155.907, -85.5263 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/StaticBody2D"]
 position = Vector2( 150.489, -3.41919 )
 rotation = 4.18879
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/StaticBody2D"]
 position = Vector2( -58.1565, -171.119 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="YSort/StaticBody2D"]
 position = Vector2( 58.4633, 6.29987 )
 rotation = -3.14159
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="YSort/StaticBody2D"]
 position = Vector2( 81.025, -232.894 )
 rotation = 1.5708
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="YSort/StaticBody2D"]
 position = Vector2( 140.892, -203.205 )
 rotation = -1.5708
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 [connection signal="body_shape_entered" from="YSort/Area2D" to="YSort/Player" method="_on_Area2D_body_shape_entered"]
 
 [editable path="YSort/Isle"]
