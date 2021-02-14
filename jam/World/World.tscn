@@ -187,6 +187,7 @@ margin_right = 320.0
 margin_bottom = 177.0
 custom_fonts/font = SubResource( 10 )
 text = "Quit the game"
+[connection signal="death" from="YSort/Player" to="." method="_on_Player_death"]
 [connection signal="body_shape_entered" from="YSort/Area2D" to="YSort/Player" method="_on_Area2D_body_shape_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer/GameRestart" to="." method="_on_GameRestart_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

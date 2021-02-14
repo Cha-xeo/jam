@@ -19,10 +19,13 @@ enum {
 	IDLING,
 	RUNNING
 }
-var mod = 1
+var mod = 0
 var state = IDLING
 
+signal death
+
 func _ready():
+	animationSkull.modulate.a = mod
 	animationTree.active = true
 	
 func get_position():
@@ -30,17 +33,19 @@ func get_position():
 	return ret
 
 func move(delta, walk):
+	if mod >= 1:
+		emit_signal("death")
 	if Input.is_action_pressed("ui_past") && array.size() > 5:
 		self.set_position(Vector2(array.front().x, array.front().y))
 		array.remove(0)
-		mod -= 0.02
+		mod += 0.02
 		animationSkull.modulate.a = mod
 		return
 	else:
 		if (array.size() >= 1000):
 			array.remove(999)
-		if (mod < 1):
-			mod += 0.005
+		if (mod > 0):
+			mod -= 0.005
 			animationSkull.modulate.a = mod
 		array.push_front(get_position())
 	if abs(walk) < WALK_FORCE * 0.2:

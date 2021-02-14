@@ -323,5 +323,5 @@ parameters/Run/blend_position = 0.0
 position = Vector2( 46.7218, -72.2064 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 28 )
-frame = 1
+frame = 2
 playing = true
