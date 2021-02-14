@@ -9,7 +9,8 @@
 [ext_resource path="res://World/World.gd" type="Script" id=7]
 
 [sub_resource type="SegmentShape2D" id=1]
-b = Vector2( 2497.87, 8.49048 )
+a = Vector2( -1394.97, -2.64038 )
+b = Vector2( 4690.35, -54.043 )
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -12.0927, -50.4737 )
@@ -100,12 +101,12 @@ position = Vector2( 43.8257, 60.6299 )
 [node name="Isle" parent="YSort" instance=ExtResource( 5 )]
 
 [node name="TileMap" parent="YSort/Isle" index="0"]
-tile_data = PoolIntArray( -4521877, 3, 0, -4521875, 3, 0, -4521873, 3, 0, -4521871, 3, 0, -4521869, 3, 0, -4521867, 3, 0, -4521865, 3, 0, -4521863, 3, 0, -655306, 0, 0, -196553, 15, 0, -196550, 16, 0, -131008, 2, 0, -131004, 2, 0, -130999, 2, 0, -130994, 2, 0, -130989, 2, 0, -130984, 2, 0, -130978, 2, 0, -130972, 2, 0, -130966, 2, 0, -130960, 2, 0, -130955, 2, 0, -65486, 5, 0, 45, 5, 0, 65559, 7, 0, 65562, 2, 0, 65575, 5, 0, 131084, 3, 0, 131086, 3, 0, 131088, 3, 0, 131090, 3, 0, 131092, 3, 0, 262140, 10, 0, 196637, 8, 0, 196638, 8, 0, 196639, 8, 0, 196640, 9, 0, 262145, 2, 0, 262148, 3, 0, 262150, 3, 0, 262152, 3, 0 )
+tile_data = PoolIntArray( -4980622, 0, 0, -4521880, 2, 0, -4521877, 3, 0, -4521875, 3, 0, -4521873, 3, 0, -4521871, 3, 0, -4521869, 3, 0, -4521867, 3, 0, -4521866, 4, 0, -655306, 0, 0, -196553, 15, 0, -196550, 16, 0, -131008, 2, 0, -131004, 2, 0, -130999, 2, 0, -130994, 2, 0, -130989, 2, 0, -130984, 2, 0, -130978, 2, 0, -130972, 2, 0, -130966, 2, 0, -130960, 2, 0, -130955, 2, 0, -65486, 5, 0, 45, 5, 0, 65559, 7, 0, 65562, 2, 0, 65575, 5, 0, 131084, 3, 0, 131086, 3, 0, 131088, 3, 0, 131090, 3, 0, 131092, 3, 0, 262140, 10, 0, 196637, 8, 0, 196638, 8, 0, 196639, 8, 0, 196640, 9, 0, 262145, 2, 0, 262148, 3, 0, 262150, 3, 0, 262152, 3, 0 )
 
 [node name="Area2D" type="Area2D" parent="YSort"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Area2D"]
-position = Vector2( -147.915, 292.546 )
+position = Vector2( -487.637, 343 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort"]
@@ -121,7 +122,7 @@ position = Vector2( -261.152, -88.4993 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/StaticBody2D"]
-position = Vector2( -158.648, 21.7689 )
+position = Vector2( -207.42, 65.4955 )
 rotation = 3.14159
 shape = SubResource( 3 )
 
