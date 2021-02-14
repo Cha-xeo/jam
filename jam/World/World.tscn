@@ -1,20 +1,22 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Background/Isle/sky.png" type="Texture" id=2]
 [ext_resource path="res://assets/Background/Isle/sea.png" type="Texture" id=3]
 [ext_resource path="res://assets/Background/Isle/clouds.png" type="Texture" id=4]
 [ext_resource path="res://World/Isle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/PixelRPG.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://World/World.gd" type="Script" id=7]
 
 [sub_resource type="SegmentShape2D" id=1]
-b = Vector2( 1066.03, -0.712891 )
+b = Vector2( 2497.87, 8.49048 )
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -12.0927, -50.4737 )
 b = Vector2( -12.0927, 149.526 )
 
 [sub_resource type="RayShape2D" id=3]
-length = 651.812
+length = 1195.9
 
 [sub_resource type="RayShape2D" id=4]
 length = 21.4
@@ -25,29 +27,34 @@ length = 159.598
 [sub_resource type="RayShape2D" id=6]
 
 [sub_resource type="RayShape2D" id=7]
-length = 616.463
+length = 1665.15
+
+[sub_resource type="DynamicFont" id=8]
+size = 64
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 6 )
 
 [node name="World" type="Node2D"]
 position = Vector2( 66.8216, 461.257 )
+script = ExtResource( 7 )
 
 [node name="BackGround" type="ParallaxBackground" parent="."]
 layer = -1
 scroll_base_scale = Vector2( 0.5, 0.25 )
 scroll_ignore_camera_zoom = true
 
-[node name="ParallaxLayerSky" type="ParallaxLayer" parent="BackGround"]
-visible = false
-motion_mirroring = Vector2( 320, 0 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sky" type="Sprite" parent="BackGround/ParallaxLayerSky"]
-position = Vector2( 0, -120 )
+[node name="Sky" type="Sprite" parent="BackGround"]
+position = Vector2( 0, -722.307 )
+scale = Vector2( 17.7757, 5.63415 )
 texture = ExtResource( 2 )
 centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 320, 304 )
+region_rect = Rect2( 0, 0, 112, 304 )
 
 [node name="ParallaxLayerClouds" type="ParallaxLayer" parent="BackGround"]
 visible = false
@@ -57,11 +64,26 @@ __meta__ = {
 }
 
 [node name="Clouds" type="Sprite" parent="BackGround/ParallaxLayerClouds"]
-position = Vector2( 0, 0.067 )
+position = Vector2( 1.49835, 83.9052 )
+scale = Vector2( 0.74371, 1 )
 texture = ExtResource( 4 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 304, 130 )
+region_rect = Rect2( 0, 0, 304, 140 )
+
+[node name="Sea" type="Sprite" parent="BackGround"]
+position = Vector2( 4.86206, 587.786 )
+scale = Vector2( 6.21598, 4.29446 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 96 )
+
+[node name="ParallaxLayerSky" type="ParallaxLayer" parent="BackGround"]
+motion_mirroring = Vector2( 112, 0 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="ParallaxLayerSea" type="ParallaxLayer" parent="BackGround"]
 visible = false
@@ -70,27 +92,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sea" type="Sprite" parent="BackGround/ParallaxLayerSea"]
-position = Vector2( 0, 88 )
-texture = ExtResource( 3 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 320, 96 )
-
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 40.2581, 73.4221 )
+position = Vector2( 43.8257, 60.6299 )
 
 [node name="Isle" parent="YSort" instance=ExtResource( 5 )]
 
 [node name="TileMap" parent="YSort/Isle" index="0"]
-tile_data = PoolIntArray( -1179586, 8, 0, -1114050, 8, 0, -1048514, 8, 0, -982978, 8, 0, -917442, 8, 0, -851906, 8, 0, -786370, 8, 0, -720834, 8, 0, -655306, 0, 0, -655298, 8, 0, -589762, 8, 0, -524226, 8, 0, -458690, 8, 0, -393154, 8, 0, -327618, 8, 0, -262082, 8, 0, -196553, 15, 0, -196550, 16, 0, -196546, 8, 0, -131010, 8, 0, -65486, 5, 0, -65474, 8, 0, 45, 5, 0, 62, 8, 0, 65559, 7, 0, 65562, 2, 0, 65575, 5, 0, 65598, 8, 0, 131084, 3, 0, 131086, 3, 0, 131088, 3, 0, 131090, 3, 0, 131092, 3, 0, 131134, 8, 0, 262140, 10, 0, 196637, 8, 0, 196638, 8, 0, 196639, 8, 0, 196640, 9, 0, 196670, 8, 0, 262145, 2, 0, 262148, 3, 0, 262150, 3, 0, 262152, 3, 0, 262206, 8, 0, 327742, 8, 0, 393278, 8, 0, 458814, 8, 0, 524350, 8, 0, 589886, 8, 0 )
+tile_data = PoolIntArray( -4521877, 3, 0, -4521875, 3, 0, -4521873, 3, 0, -4521871, 3, 0, -4521869, 3, 0, -4521867, 3, 0, -4521865, 3, 0, -4521863, 3, 0, -655306, 0, 0, -196553, 15, 0, -196550, 16, 0, -131008, 2, 0, -131004, 2, 0, -130999, 2, 0, -130994, 2, 0, -130989, 2, 0, -130984, 2, 0, -130978, 2, 0, -130972, 2, 0, -130966, 2, 0, -130960, 2, 0, -130955, 2, 0, -65486, 5, 0, 45, 5, 0, 65559, 7, 0, 65562, 2, 0, 65575, 5, 0, 131084, 3, 0, 131086, 3, 0, 131088, 3, 0, 131090, 3, 0, 131092, 3, 0, 262140, 10, 0, 196637, 8, 0, 196638, 8, 0, 196639, 8, 0, 196640, 9, 0, 262145, 2, 0, 262148, 3, 0, 262150, 3, 0, 262152, 3, 0 )
 
 [node name="Area2D" type="Area2D" parent="YSort"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Area2D"]
-position = Vector2( -26.0678, 204.338 )
+position = Vector2( -147.915, 292.546 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort"]
@@ -102,12 +117,12 @@ scale = Vector2( 1.00548, 1 )
 polygon = PoolVector2Array( 75.9014, 42.6697, 128.774, 26.8269, 139.553, 26.6697, 139.553, 42.6697, 107.727, 42.6697, 91.8141, 42.6697 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/StaticBody2D"]
-position = Vector2( -155.907, -85.5263 )
+position = Vector2( -261.152, -88.4993 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/StaticBody2D"]
-position = Vector2( 150.489, -3.41919 )
-rotation = 4.18879
+position = Vector2( -158.648, 21.7689 )
+rotation = 3.14159
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/StaticBody2D"]
@@ -125,9 +140,54 @@ rotation = 1.5708
 shape = SubResource( 6 )
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="YSort/StaticBody2D"]
-position = Vector2( 140.892, -203.205 )
+position = Vector2( -113.666, -1113.96 )
 rotation = -1.5708
 shape = SubResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverScreen" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/GameOverScreen"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1273.0
+margin_bottom = 713.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverScreen/CenterContainer"]
+margin_left = 473.0
+margin_top = 264.0
+margin_right = 793.0
+margin_bottom = 441.0
+custom_constants/separation = 25
+
+[node name="GameOver" type="Label" parent="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 8 )
+text = "You lost"
+
+[node name="GameRestart" type="Button" parent="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer"]
+margin_top = 90.0
+margin_right = 320.0
+margin_bottom = 129.0
+custom_fonts/font = SubResource( 9 )
+text = "Retry ?"
+
+[node name="Quit" type="Button" parent="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 320.0
+margin_bottom = 177.0
+custom_fonts/font = SubResource( 10 )
+text = "Quit the game"
 [connection signal="body_shape_entered" from="YSort/Area2D" to="YSort/Player" method="_on_Area2D_body_shape_entered"]
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer/GameRestart" to="." method="_on_GameRestart_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 
 [editable path="YSort/Isle"]
