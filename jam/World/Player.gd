@@ -38,14 +38,14 @@ func move(delta, walk):
 	if Input.is_action_pressed("ui_past") && array.size() > 5:
 		self.set_position(Vector2(array.front().x, array.front().y))
 		array.remove(0)
-		mod += 0.02
+		mod += 0.01
 		animationSkull.modulate.a = mod
 		return
 	else:
 		if (array.size() >= 1000):
 			array.remove(999)
 		if (mod > 0):
-			mod -= 0.005
+			mod -= 0.004
 			animationSkull.modulate.a = mod
 		array.push_front(get_position())
 	if abs(walk) < WALK_FORCE * 0.2:
